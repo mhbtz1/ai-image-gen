@@ -1,18 +1,29 @@
-import { Hono } from 'hono'
-import { cors } from 'hono/cors'
-import { serve } from '@hono/node-server'
-import  { zValidator } from '@hono/zod-validator'
-import { z } from 'zod'
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { serve } from "@hono/node-server";
+import { zValidator } from "@hono/zod-validator";
+import { z } from "zod";
 
-const app = new Hono()
+const app = new Hono();
 
-app.use("/", cors())
+//set CORS for get requests to allow frontend to make requests to the backend
 
-app.get('/', zValidator("query", z.object({prompt: z.string()})), async (c) => {
+
+const allow_frontend = cors({
+  origin: "*",
+  allowMethods: ["GET"],
+});
+app.use(allow_frontend);
+
+
+app.get(
+  "/",
+  zValidator("query", z.object({ prompt: z.string() })),
+  async (c) => {
     // Picture of a dog
-    const prompt = c.req.valid("query");
+    const { prompt } = c.req.valid("query");
     const inputs = {
-      prompt
+      prompt,
     };
 
     const response = await c.env.AI.run(
@@ -25,7 +36,7 @@ app.get('/', zValidator("query", z.object({prompt: z.string()})), async (c) => {
         "content-type": "image/png",
       },
     });
+  }
+);
 
-})
-
-export default app
+export default app;
