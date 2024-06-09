@@ -1,8 +1,1 @@
-```
-npm install
-npm run dev
-```
-
-```
-npm run deploy
-```
+A mini genai application for allowing users to generate custom images using SDXL. Built with Hono.js, bun, and Cloudflare AI + workers.
