@@ -6,13 +6,22 @@ import { z } from 'zod'
 
 const app = new Hono()
 
-app.use("/", cors())
 
-app.get('/', zValidator("query", z.object({prompt: z.string()})), async (c) => {
+//set CORS for get requests to allow frontend to make requests to the backend
+const allow_frontend = cors({
+  origin : '*',
+  allowMethods : ['GET']
+});
+app.use(allow_frontend)
+
+app.get('/', 
+        async (c) => {
     // Picture of a dog
-    const prompt = c.req.valid("query");
+    //console.log(c.req.json())
+    //const prompt = c.req.valid("query")
+    //console.log("prompt: " + prompt)
     const inputs = {
-      prompt
+      prompt : "a cat"
     };
 
     const response = await c.env.AI.run(
