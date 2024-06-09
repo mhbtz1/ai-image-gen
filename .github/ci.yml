@@ -6,3 +6,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    run: | 
+        bun run deploy
+        cd floral-truth-9e09 && bun run deploy
