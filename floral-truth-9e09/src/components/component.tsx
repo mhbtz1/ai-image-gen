@@ -81,7 +81,6 @@ export function Component() {
                                   } } >Generate</Button>
                 <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                   <InfoIcon className="h-4 w-4" />
-                  <span>Image credits: 10</span>
                 </div>
               </div>
             </div>
