@@ -75,7 +75,7 @@ export function Component() {
               <Textarea className="w-full" placeholder="Describe the image you want to generate..." rows={3}  value={prompt} onChange={ (p) => setPrompt(p.target.value) }/>
               <div className="flex justify-between items-center">
                 <Button onClick={ async () => {
-                                    const response = await fetch("http://ai-image-gen.habtem.workers.dev?prompt=" + prompt)
+                                    const response = await fetch("https://ai-image-gen.habtem.workers.dev?prompt=" + prompt)
                                     const img : Blob = await response.blob();
                                     setImageUrl(URL.createObjectURL(img));
                                   } } >Generate</Button>
