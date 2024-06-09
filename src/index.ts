@@ -1,13 +1,18 @@
 import { Hono } from 'hono'
+import { cors } from 'hono/cors'
 import { serve } from '@hono/node-server'
-
+import  { zValidator } from '@hono/zod-validator'
+import { z } from 'zod'
 
 const app = new Hono()
 
-app.get('/', async (c) => {
+app.use("/", cors())
+
+app.get('/', zValidator("query", z.object({prompt: z.string()})), async (c) => {
     // Picture of a dog
+    const prompt = c.req.valid("query");
     const inputs = {
-      prompt: "cyberpunk cat",
+      prompt
     };
 
     const response = await c.env.AI.run(
