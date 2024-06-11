@@ -29,6 +29,7 @@ export function Component() {
 
   const [prompt, setPrompt] = useState("")
   const [imageUrl, setImageUrl] = useState("")
+  const [logged, setLogged] = useState(false)
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -59,7 +60,7 @@ export function Component() {
               <DropdownMenuItem>My Profile</DropdownMenuItem>
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem> {logged ? "Logout" : "Login"} </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </nav>
