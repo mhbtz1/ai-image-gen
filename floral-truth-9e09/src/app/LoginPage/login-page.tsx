@@ -30,7 +30,8 @@ export default function Component() {
           <div>
             <div className="space-y-4">
               <Button variant="outline" className="w-full" onClick={async () => signIn('google')}>
-                <ChromeIcon className="mr-2 h-5 w-5"/>
+                 <ChromeIcon className="mr-2 h-5 w-5"/>
+                   Sign in with Google 
               </Button>
               <Button variant="outline" className="w-full" onClick={async () => signIn('github')}>
                 <GitlabIcon className="mr-2 h-5 w-5" />

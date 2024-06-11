@@ -10,12 +10,5 @@ import Link from 'next/link'
 
 export default function Home() {
   const pathname = usePathname();
-
-  return (
-  <ul>
-    <li>
-      <Component/>
-    </li>
-  </ul>
-  );
+  return <Component/>
 }
