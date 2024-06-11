@@ -3,12 +3,13 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy --minify",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
-    "local-test" : "bun run src/index.ts src/auth.ts"
+    "local-test": "bun run src/index.ts src/auth.ts"
   },
   "dependencies": {
     "@hono/node-server": "^1.11.2",
     "@hono/zod-validator": "^0.2.2",
     "hono": "^4.4.4",
+    "next-auth": "^5.0.0-beta.19",
     "zod": "^3.23.8"
   },
   "devDependencies": {
